@@ -3,48 +3,44 @@ import styled from "styled-components";
 import theme from "../styles/theme";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 
-const FormLayout = () => {
-  const [clicked, setClicked] = useState(false);
-  console.log(clicked);
+const FormLayout = ({ formData }) => {
   const handleCheck = (e) => {
-    console.log("마지막요소", e.target);
-    console.log("이벤트 바인딩 요소", e.currentTarget);
     e.currentTarget.classList.toggle("check");
   };
+
   return (
     <FormContainer>
-      <h1 className="title">예약하기</h1>
+      <h1 className="title">{formData.title}</h1>
       <Form>
-        <div className="radio-input">
-          <RadioBtn>
-            <input type="radio" value="진료" />
-            <span>진료</span>
-          </RadioBtn>
-          <RadioBtn>
-            <input type="radio" value="검진" />
-            <span>검진</span>
-          </RadioBtn>
-        </div>
+        {formData.radio && (
+          <div className="radio-input">
+            {formData.radio.map((content, idx) => (
+              <RadioBtn key={idx}>
+                <input type="radio" value={content} name="kind" required />
+                <span>{content}</span>
+              </RadioBtn>
+            ))}
+          </div>
+        )}
         <div className="text-input">
-          <input type="text" placeholder="이름" required />
-          <input type="text" placeholder="전화번호" required />
-          <input type="text" placeholder="주민등록번호" required />
+          {formData.input.map((content) => (
+            <input type="text" placeholder={content} required />
+          ))}
         </div>
-        <div className="privacy-consent">
+        <div className="notice-box">
           <div className="bg-box">
-            <h3>개인정보 수집∙이용 동의</h3>
-            <p>
-              개인정보는 병원정보 조회를 위해서만 사용됩니다. 개인정보 이용에
-              동의합니다. 비동의 시 온라인 병원 예약 서비스를 이용하실 수 없습니다.
-            </p>
+            <h3>{formData.notice.title}</h3>
+            <p>{formData.notice.content}</p>
           </div>
-          <div className="check-box" onClick={() => setClicked(!clicked)}>
-            <BsFillCheckCircleFill />
-            <span>동의</span>
-          </div>
+          {formData.checkBtn && (
+            <div className="check-box" onClick={handleCheck}>
+              <BsFillCheckCircleFill />
+              <span>동의</span>
+            </div>
+          )}
         </div>
         <div className="btn-box">
-          <button>확인</button>
+          <button>{formData.buttonContent}</button>
         </div>
       </Form>
     </FormContainer>
@@ -52,12 +48,15 @@ const FormLayout = () => {
 };
 
 const FormContainer = styled.div`
-  height: 100%;
-  padding: 70px 35px 30px;
+  position: relative;
+  padding: 70px 35px 0;
+  margin-top: 30px;
   border-radius: 45px 45px 0px 0px;
   background-color: ${theme.color.bgColor};
+  /* overflow-y: hidden; */
 
   .title {
+    margin-bottom: 30px;
     color: ${theme.color.fontColor};
     font-size: ${theme.fontSize.lg};
     font-weight: ${theme.fontWeight.md};
@@ -69,7 +68,7 @@ const Form = styled.form`
   flex-direction: column;
 
   .radio-input {
-    margin: 40px 0 10px;
+    margin: 10px 0;
     font-weight: ${theme.fontWeight.md};
   }
 
@@ -93,12 +92,12 @@ const Form = styled.form`
     }
   }
 
-  .privacy-consent {
+  .notice-box {
     .bg-box {
       width: 400px;
       padding: 20px 20px;
       background-color: white;
-      border-radius: 14px;
+      border-radius: 16px;
       color: ${theme.color.fontColor};
 
       h3 {
@@ -114,13 +113,9 @@ const Form = styled.form`
       }
     }
 
-    .check {
-      color: ${theme.color.pointColor};
-    }
-
     .check-box {
       width: 100%;
-      margin: 20px 0 20px;
+      margin-top: 20px;
       font-size: ${theme.fontSize.base};
       color: ${(props) =>
         props.clicked ? theme.color.pointColor : theme.color.inputColor};
@@ -132,12 +127,18 @@ const Form = styled.form`
       span {
         vertical-align: middle;
       }
+
+      &.check {
+        color: ${theme.color.pointColor};
+      }
     }
   }
 
   .btn-box {
-    display: flex;
-    justify-content: flex-end;
+    position: absolute;
+    right: 35px;
+    bottom: 30px;
+    margin-top: 20px;
 
     button {
       width: 120px;

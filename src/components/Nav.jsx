@@ -5,18 +5,19 @@ import logo from "../assets/images/logo.png";
 
 const Nav = () => {
   const [isClicked, setClicked] = useState(true);
-  const handleClicked = () => {
-    setClicked((current) => !current);
+
+  const setFalse = () => {
+    setClicked(false);
   };
 
   return (
     <NavContainer>
       <img className="logo" src={logo} alt="logo" />
       <div className="menu-btn-box">
-        <MenuBtn clicked={isClicked} onClick={handleClicked}>
+        <MenuBtn clicked={isClicked} onClick={() => setClicked(true)}>
           예약하기
         </MenuBtn>
-        <MenuBtn clicked={!isClicked} onClick={handleClicked}>
+        <MenuBtn clicked={!isClicked} onClick={() => setClicked(false)}>
           예약조회
         </MenuBtn>
       </div>
@@ -25,7 +26,7 @@ const Nav = () => {
 };
 
 const NavContainer = styled.nav`
-  margin-right: 40px;
+  margin: 30px 40px 0 0;
 
   .logo {
     width: 30px;
@@ -42,8 +43,8 @@ const MenuBtn = styled.button`
   height: 70px;
   padding: 0 20px;
   background-color: ${(props) =>
-    props.clicked ? "white" : theme.color.pointColor};
-  color: ${(props) => (props.clicked ? theme.color.pointColor : "white")};
+    props.clicked ? theme.color.pointColor : "white"};
+  color: ${(props) => (props.clicked ? "white" : theme.color.pointColor)};
   font-size: ${theme.fontSize.base};
   font-weight: ${theme.fontWeight.md};
   border: none;
