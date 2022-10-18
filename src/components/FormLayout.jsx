@@ -1,30 +1,81 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import { BsFillCheckCircleFill } from "react-icons/bs";
 
 const FormLayout = ({ formData }) => {
-  const handleCheck = (e) => {
-    e.currentTarget.classList.toggle("check");
+  const [formInput, setFormInput] = useState({});
+  const [agreement, setAgree] = useState(false);
+  const [formSubmit, setFormSubmit] = useState(false);
+
+  const handleInput = (event) => {
+    const { name, value } = event.target;
+    setFormInput((inputValues) => ({ ...inputValues, [name]: value }));
+  };
+
+  useEffect(() => {
+    if (
+      formInput.kind &&
+      formInput.name &&
+      formInput.phoneNum &&
+      formInput.RRN
+    ) {
+      setFormSubmit(agreement);
+    }
+  }, [formInput, agreement]);
+
+  const onSubmit = (e) => {
+    e.preventDefault();
+    const body = {
+      formInput,
+    };
+    console.log(body);
+
+    fetch("http://localhost:3001/userInfo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        alert("Your review has been submitted!");
+        // setRender(current => !current);
+      });
   };
 
   return (
     <FormContainer>
       <h1 className="title">{formData.title}</h1>
-      <Form>
+      <Form onSubmit={onSubmit}>
         {formData.radio && (
           <div className="radio-input">
             {formData.radio.map((content, idx) => (
               <RadioBtn key={idx}>
-                <input type="radio" value={content} name="kind" required />
+                <input
+                  type="radio"
+                  value={content}
+                  name="kind"
+                  onClick={handleInput}
+                  required
+                />
                 <span>{content}</span>
               </RadioBtn>
             ))}
           </div>
         )}
         <div className="text-input">
-          {formData.input.map((content) => (
-            <input type="text" placeholder={content} required />
+          {formData.input.map((content, idx) => (
+            <input
+              key={idx}
+              type="text"
+              placeholder={content.placeholder}
+              name={content.name}
+              onChange={handleInput}
+              autoComplete="off"
+              required
+            />
           ))}
         </div>
         <div className="notice-box">
@@ -33,14 +84,17 @@ const FormLayout = ({ formData }) => {
             <p>{formData.notice.content}</p>
           </div>
           {formData.checkBtn && (
-            <div className="check-box" onClick={handleCheck}>
+            <div
+              className={`check-box ${agreement && "check"}`}
+              onClick={() => setAgree((current) => !current)}
+            >
               <BsFillCheckCircleFill />
               <span>동의</span>
             </div>
           )}
         </div>
         <div className="btn-box">
-          <button>{formData.buttonContent}</button>
+          <button disabled={!formSubmit}>{formData.buttonContent}</button>
         </div>
       </Form>
     </FormContainer>
@@ -119,7 +173,7 @@ const Form = styled.form`
       font-size: ${theme.fontSize.base};
       color: ${(props) =>
         props.clicked ? theme.color.pointColor : theme.color.inputColor};
-
+      cursor: pointer;
       svg {
         vertical-align: middle;
         margin: 0 10px 0 5px;
@@ -149,6 +203,10 @@ const Form = styled.form`
       background-color: ${theme.color.pointColor};
       font-size: ${theme.fontSize.base};
       font-weight: ${theme.fontWeight.md};
+
+      &:disabled {
+        background-color: ${theme.color.inputColor};
+      }
     }
   }
 `;
