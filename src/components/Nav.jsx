@@ -3,21 +3,31 @@ import styled from "styled-components";
 import theme from "../styles/theme";
 import logo from "../assets/images/logo.png";
 
-const Nav = () => {
+const Nav = ({ setMenu }) => {
   const [isClicked, setClicked] = useState(true);
-
-  const setFalse = () => {
-    setClicked(false);
-  };
 
   return (
     <NavContainer>
       <img className="logo" src={logo} alt="logo" />
       <div className="menu-btn-box">
-        <MenuBtn clicked={isClicked} onClick={() => setClicked(true)}>
+        <MenuBtn
+          id="appointment"
+          clicked={isClicked}
+          onClick={(e) => {
+            setClicked(true);
+            setMenu(e.target.id);
+          }}
+        >
           예약하기
         </MenuBtn>
-        <MenuBtn clicked={!isClicked} onClick={() => setClicked(false)}>
+        <MenuBtn
+          id="confirm"
+          clicked={!isClicked}
+          onClick={(e) => {
+            setClicked(false);
+            setMenu(e.target.id);
+          }}
+        >
           예약조회
         </MenuBtn>
       </div>

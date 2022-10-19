@@ -2,8 +2,10 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import { BsFillCheckCircleFill } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 const FormLayout = ({ formData }) => {
+  const navigate = useNavigate();
   const [formInput, setFormInput] = useState({});
   const [agreement, setAgree] = useState(false);
   const [formSubmit, setFormSubmit] = useState(false);
@@ -40,8 +42,8 @@ const FormLayout = ({ formData }) => {
     })
       .then((res) => res.json())
       .then((json) => {
-        alert("Your review has been submitted!");
-        // setRender(current => !current);
+        console.log(json);
+        navigate(`/appointment/${json.id}`);
       });
   };
 

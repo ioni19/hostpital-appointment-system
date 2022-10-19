@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { store } from "../context/store";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import DatePicker from "react-datepicker";
@@ -6,20 +7,33 @@ import "react-datepicker/dist/react-datepicker.css";
 import { ko } from "date-fns/esm/locale";
 
 const Calendar = () => {
+  const { setSelectedDate } = useContext(store);
   const [startDate, setStartDate] = useState(new Date());
-  // const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+
+  const handleDateFormat = (e) => {
+    const dateArr = e.toLocaleDateString().split(".");
+    setSelectedDate(`${dateArr[0]}년${dateArr[1]}월${dateArr[2]}일`);
+  };
+
+  const handleTimeOptions = (e) => {
+    
+  }
+  const dateHandler = (e) => {
+    setStartDate(e);
+    handleDateFormat(e);
+  };
 
   return (
     <StyledCalendar>
       <DatePicker
-        dateFormat="yy.MM.dd(eee)"
+        dateFormat="yy년 MM월 dd일 eee요일"
         dateFormatCalendar="yyyy년 M월"
         locale={ko}
         minDate={new Date()}
         selected={startDate}
-        onChange={(date) => setStartDate(date)}
         inline
+        // onChange={(e) => console.log(e)}
+        onChange={dateHandler}
         disabledKeyboardNavigation
       />
     </StyledCalendar>

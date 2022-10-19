@@ -1,12 +1,27 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { store } from "../context/store";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import TimeOptions from "../constantData/timeData";
 import { RadioBtn } from "./FormLayout";
 import { GrPowerReset } from "react-icons/gr";
+import { useParams } from "react-router-dom";
 
 const Time = () => {
+  const params = useParams();
+  const userId = params.id;
+
+  const { selectedDate } = useContext(store);
   const timeData = TimeOptions.time;
+  const [userData, setUserData] = useState({});
+
+  useEffect(() => {
+    fetch(`http://localhost:3001/userInfo/${userId}`)
+      .then((res) => res.json())
+      .then((json) => {
+        setUserData(json.formInput);
+      });
+  }, [userId]);
 
   return (
     <TimeContainer>
@@ -16,9 +31,10 @@ const Time = () => {
       </p>
       <div className="announcement-box">
         <p className="announce">
-          <span className="name">정예원</span> 님이 선택하신 예약 일정은
+          <span className="name">{userData.name}</span> 님이 선택하신{" "}
+          {userData.kind} 예약 일정은
         </p>
-        <p className="date">2022년 10월 19일 오전 10시입니다.</p>
+        <p className="date">{selectedDate} 오전 10시입니다.</p>
       </div>
       <div className="reset-btn">
         <GrPowerReset />
