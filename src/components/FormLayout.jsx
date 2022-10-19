@@ -211,7 +211,7 @@ const Form = styled.form`
   }
 `;
 
-const RadioBtn = styled.label`
+export const RadioBtn = styled.label`
   margin-right: 30px;
   cursor: pointer;
 

@@ -21,6 +21,5 @@ export default Main;
 const MainContainer = styled.div`
   display: flex;
   height: 100vh;
-  /* padding-top: 3%; */
   overflow-y: hidden;
 `;

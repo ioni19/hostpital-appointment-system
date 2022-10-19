@@ -1,0 +1,139 @@
+import React from "react";
+import styled from "styled-components";
+import theme from "../styles/theme";
+import TimeOptions from "../constantData/timeData";
+import { RadioBtn } from "./FormLayout";
+import { GrPowerReset } from "react-icons/gr";
+
+const Time = () => {
+  const timeData = TimeOptions.time;
+
+  return (
+    <TimeContainer>
+      <h1 className="title">예약하기</h1>
+      <p className="notice">
+        13:00 PM - 14:00 PM은 점심시간으로 진료 및 검진 예약이 불가합니다.
+      </p>
+      <div className="announcement-box">
+        <p className="announce">
+          <span className="name">정예원</span> 님이 선택하신 예약 일정은
+        </p>
+        <p className="date">2022년 10월 19일 오전 10시입니다.</p>
+      </div>
+      <div className="reset-btn">
+        <GrPowerReset />
+        <span>다시 선택하기</span>
+      </div>
+      <div className="time-options">
+        {timeData.map((options) => (
+          <TimeOption key={options.id} isBooked={options.isBooked} time>
+            <input
+              type="radio"
+              name="time"
+              disabled={options.isBooked}
+              required
+            />
+            <span>{options.time}</span>
+          </TimeOption>
+        ))}
+      </div>
+    </TimeContainer>
+  );
+};
+
+const TimeContainer = styled.div`
+  height: 100%;
+  padding: 70px 35px 0;
+  margin-top: 30px;
+  border-radius: 45px 45px 0px 0px;
+  background-color: ${theme.color.bgColor};
+  /* overflow-y: hidden; */
+
+  .title {
+    margin-bottom: 15px;
+    color: ${theme.color.fontColor};
+    font-size: ${theme.fontSize.lg};
+    font-weight: ${theme.fontWeight.md};
+  }
+
+  .notice {
+    margin-bottom: 30px;
+    color: ${theme.color.fontColor};
+    font-size: ${theme.fontSize.sm};
+    /* font-weight: ${theme.fontWeight.md}; */
+  }
+
+  .announcement-box {
+    padding: 30px;
+    background-color: ${theme.color.pointColor};
+    border-radius: 16px;
+
+    .announce {
+      margin-bottom: 10px;
+      color: white;
+      font-size: ${theme.fontSize.sm};
+
+      opacity: 0.7;
+
+      .name {
+        color: white;
+        font-weight: ${theme.fontWeight.md};
+        opacity: 10;
+      }
+    }
+
+    .date {
+      color: white;
+      font-weight: ${theme.fontWeight.md};
+      font-size: ${theme.fontSize.md};
+    }
+  }
+
+  .reset-btn {
+    display: flex;
+    justify-content: flex-end;
+    padding: 30px 20px 10px 0;
+    color: ${theme.color.fontColor};
+    font-size: ${theme.fontSize.sm};
+
+    svg {
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+    span {
+      vertical-align: middle;
+    }
+  }
+
+  .time-options {
+  }
+`;
+
+const TimeOption = styled(RadioBtn)`
+  display: inline-block;
+  height: 30px;
+  width: 17.5%;
+  margin: 10px;
+  padding: 15px 15px 10px 10px;
+  background-color: ${(props) => (props.isBooked ? "none" : "white")};
+  border-radius: 14px;
+  box-shadow: 0 3px 10px 0 rgba(32, 32, 32, 0.08);
+
+  input {
+    margin-right: 12px;
+    border-color: ${(props) => props.time && "#dcdada"};
+    background-color: ${(props) => props.time && "#dcdada"};
+    cursor: ${(props) => (props.isBooked ? "not-allowed" : "pointer")};
+  }
+
+  span {
+    color: ${(props) =>
+      props.isBooked
+        ? `${theme.color.inputColor}`
+        : `${theme.color.fontColor}`};
+    font-size: ${theme.fontSize.base};
+    letter-spacing: 0;
+  }
+`;
+
+export default Time;

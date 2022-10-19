@@ -29,7 +29,8 @@ const NavContainer = styled.nav`
   margin: 30px 40px 0 0;
 
   .logo {
-    width: 30px;
+    width: 50px;
+    margin: 30px;
   }
 
   .menu-btn-box {
@@ -40,6 +41,7 @@ const NavContainer = styled.nav`
 `;
 
 const MenuBtn = styled.button`
+  width: 120px;
   height: 70px;
   padding: 0 20px;
   background-color: ${(props) =>
