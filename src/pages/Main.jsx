@@ -1,20 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { store } from "../context/store";
 import styled from "styled-components";
 import formData from "../constantData/formData";
+import Modal from "../components/Modal";
 import Nav from "../components/Nav";
 import FormLayout from "../components/FormLayout";
 import Calendar from "../components/Calendar";
 
 const Main = () => {
-  const [menu, setMenu] = useState("appointment");
-
+  const { menu } = useContext(store);
   return (
     <MainContainer>
-      <Nav setMenu={setMenu} />
+      <Nav />
       {menu === "appointment" && <FormLayout formData={formData.Appointment} />}
       {menu === "confirm" && <FormLayout formData={formData.Confirm} />}
-
-      <Calendar />
+      {menu === "appointment" && <Calendar />}
+      {/* <Modal /> */}
     </MainContainer>
   );
 };

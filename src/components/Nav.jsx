@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { store } from "../context/store";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import logo from "../assets/images/logo.png";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
-const Nav = ({ setMenu }) => {
+const Nav = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { menu, setMenu } = useContext(store);
   const [isClicked, setClicked] = useState(true);
+  console.log(location);
+  const goConfirm = () => {
+    if (location.pathname === "/appointment") {
+      navigate("/");
+      setMenu("confirm");
+      console.log("누름");
+    }
+  };
 
   return (
     <NavContainer>
@@ -26,6 +39,7 @@ const Nav = ({ setMenu }) => {
           onClick={(e) => {
             setClicked(false);
             setMenu(e.target.id);
+            goConfirm();
           }}
         >
           예약조회
@@ -44,6 +58,7 @@ const NavContainer = styled.nav`
   }
 
   .menu-btn-box {
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
     border: none;

@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+import { store } from "../context/store";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import { BsFillCheckCircleFill } from "react-icons/bs";
@@ -6,13 +7,18 @@ import { useNavigate } from "react-router-dom";
 
 const FormLayout = ({ formData }) => {
   const navigate = useNavigate();
-  const [formInput, setFormInput] = useState({});
+  const { formInput, setFormInput, menu } = useContext(store);
+  const [inquiryInput, setInquiryInput] = useState({});
   const [agreement, setAgree] = useState(false);
   const [formSubmit, setFormSubmit] = useState(false);
 
   const handleInput = (event) => {
     const { name, value } = event.target;
-    setFormInput((inputValues) => ({ ...inputValues, [name]: value }));
+    if (menu === "appointment")
+      setFormInput((inputValues) => ({ ...inputValues, [name]: value }));
+    else if (menu === "confirm")
+      setInquiryInput((inputValues) => ({ ...inputValues, [name]: value }));
+    console.log(inquiryInput);
   };
 
   useEffect(() => {
@@ -26,26 +32,27 @@ const FormLayout = ({ formData }) => {
     }
   }, [formInput, agreement]);
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    const body = {
-      formInput,
-    };
-    console.log(body);
+  useEffect(() => {
+    if (inquiryInput.name && inquiryInput.phoneNum && inquiryInput.appointNum) {
+      setFormSubmit(true);
+    }
+  }, [inquiryInput]);
 
-    fetch("http://localhost:3001/userInfo", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        console.log(json);
-        navigate(`/appointment/${json.id}`);
-      });
+  const onSubmit = (e) => {
+    if (menu === "appointment") {
+      e.preventDefault();
+      navigate("/appointment");
+    } else if (menu === "confirm") {
+      e.preventDefault();
+      fetch("http://localhost:3001/appointmentInfo")
+        .then((res) => res.json())
+        .then((json) => {
+          console.log(json);
+        });
+    }
   };
+
+  const handleInquiry = () => {};
 
   return (
     <FormContainer>

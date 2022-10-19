@@ -16,7 +16,7 @@ const Appointment = {
 };
 
 const Confirm = {
-  title: "예약확인",
+  title: "예약조회",
   input: [
     { placeholder: "이름", name: "name" },
     { placeholder: "전화번호", name: "phoneNum" },

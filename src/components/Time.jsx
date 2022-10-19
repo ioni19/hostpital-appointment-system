@@ -2,26 +2,40 @@ import React, { useContext, useEffect, useState } from "react";
 import { store } from "../context/store";
 import styled from "styled-components";
 import theme from "../styles/theme";
-import TimeOptions from "../constantData/timeData";
+// import TimeOptions from "../constantData/timeData";
 import { RadioBtn } from "./FormLayout";
 import { GrPowerReset } from "react-icons/gr";
 import { useParams } from "react-router-dom";
 
 const Time = () => {
-  const params = useParams();
-  const userId = params.id;
+  const { selectedDate, formInput, setFormInput, timeOptions } =
+    useContext(store);
+  // const timeData = TimeOptions.time;
 
-  const { selectedDate } = useContext(store);
-  const timeData = TimeOptions.time;
-  const [userData, setUserData] = useState({});
+  const handleInput = (event) => {
+    const { name, value } = event.target;
+    setFormInput({ ...formInput, date: selectedDate, [name]: value });
+    console.log(formInput);
+  };
 
-  useEffect(() => {
-    fetch(`http://localhost:3001/userInfo/${userId}`)
+  const onSubmit = () => {
+    const body = {
+      formInput,
+    };
+    console.log(body);
+
+    fetch("http://localhost:3001/appointmentInfo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    })
       .then((res) => res.json())
       .then((json) => {
-        setUserData(json.formInput);
+        console.log(json);
       });
-  }, [userId]);
+  };
 
   return (
     <TimeContainer>
@@ -31,28 +45,42 @@ const Time = () => {
       </p>
       <div className="announcement-box">
         <p className="announce">
-          <span className="name">{userData.name}</span> 님이 선택하신{" "}
-          {userData.kind} 예약 일정은
+          <span className="name">{formInput.name}</span> 님이 선택하신{" "}
+          {formInput.kind} 예약 일정은
         </p>
-        <p className="date">{selectedDate} 오전 10시입니다.</p>
+        <p className="date">
+          {selectedDate &&
+            formInput.time &&
+            `${selectedDate} ${formInput.time} 입니다.`}
+        </p>
       </div>
-      <div className="reset-btn">
+
+      {/* <div className="reset-btn">
         <GrPowerReset />
-        <span>다시 선택하기</span>
-      </div>
+        <span>다시 
+        선택하기</span>
+      </div> */}
       <div className="time-options">
-        {timeData.map((options) => (
-          <TimeOption key={options.id} isBooked={options.isBooked} time>
+        {timeOptions.map((options) => (
+          <TimeOption
+            onClick={handleInput}
+            key={options.id}
+            isBooked={options.isBooked}
+            time
+          >
             <input
               type="radio"
               name="time"
               disabled={options.isBooked}
+              value={options.time}
               required
             />
             <span>{options.time}</span>
           </TimeOption>
         ))}
       </div>
+
+      <button onClick={onSubmit}>예약 확정</button>
     </TimeContainer>
   );
 };
@@ -66,17 +94,10 @@ const TimeContainer = styled.div`
   /* overflow-y: hidden; */
 
   .title {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     color: ${theme.color.fontColor};
     font-size: ${theme.fontSize.lg};
     font-weight: ${theme.fontWeight.md};
-  }
-
-  .notice {
-    margin-bottom: 30px;
-    color: ${theme.color.fontColor};
-    font-size: ${theme.fontSize.sm};
-    /* font-weight: ${theme.fontWeight.md}; */
   }
 
   .announcement-box {
@@ -99,6 +120,7 @@ const TimeContainer = styled.div`
     }
 
     .date {
+      height: 30px;
       color: white;
       font-weight: ${theme.fontWeight.md};
       font-size: ${theme.fontSize.md};
@@ -122,6 +144,15 @@ const TimeContainer = styled.div`
   }
 
   .time-options {
+    margin-top: 20px;
+  }
+
+  .notice {
+    padding: 10px 0;
+    margin-bottom: 30px;
+    color: ${theme.color.fontColor};
+    font-size: ${theme.fontSize.sm};
+    /* font-weight: ${theme.fontWeight.md}; */
   }
 `;
 

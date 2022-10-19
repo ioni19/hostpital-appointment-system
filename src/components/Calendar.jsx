@@ -7,27 +7,67 @@ import "react-datepicker/dist/react-datepicker.css";
 import { ko } from "date-fns/esm/locale";
 
 const Calendar = () => {
-  const { setSelectedDate } = useContext(store);
+  const {
+    setSelectedDate,
+    formInput,
+    setFormInput,
+    timeOptions,
+    setTimeOptions,
+  } = useContext(store);
   const [startDate, setStartDate] = useState(new Date());
+  const [clickDate, setClickDate] = useState();
+  // const [timeOptions, setTimeOptions] = useState([]);
 
   const handleDateFormat = (e) => {
-    const dateArr = e.toLocaleDateString().split(".");
-    setSelectedDate(`${dateArr[0]}년${dateArr[1]}월${dateArr[2]}일`);
+    const dateArr = e.toLocaleDateString().slice(0, -1).split(". ");
+    setClickDate(dateArr.join(""));
+    // console.log(clickDate);
+    setSelectedDate(`${dateArr[0]}년 ${dateArr[1]}월 ${dateArr[2]}일`);
   };
 
-  const handleTimeOptions = (e) => {
-    
-  }
+  const handleData = () => {
+    fetch("http://localhost:3001/timeOptions")
+      .then((res) => res.json())
+      .then((json) => {
+        // // clickDate;
+        for (let i = 0; i < json.length; i++) {
+          if (json[i].date === Number(clickDate)) {
+            setTimeOptions(json[i].time);
+            // console.log(json[i].time);
+            break;
+          }
+        }
+        // json.map((timeData) => {
+        // console.log(timeData.time);
+        console.log(clickDate);
+
+        //   timeData.date === Number(clickDate) && setTimeOptions(timeData.time);
+        //   console.log(timeOptions);
+        // });
+      });
+  };
+
+  // const handleInput = (event) => {
+  //   const { name, value } = event.target;
+  //   setFormInput({ ...formInput, date: event, [name]: value });
+  //   console.log(formInput);
+  // };
+
+  const handleTimeOptions = (e) => {};
   const dateHandler = (e) => {
     setStartDate(e);
     handleDateFormat(e);
+    handleData();
+
+    // handleInput(e);
   };
 
   return (
     <StyledCalendar>
       <DatePicker
+        name="date"
         dateFormat="yy년 MM월 dd일 eee요일"
-        dateFormatCalendar="yyyy년 M월"
+        dateFormatCalendar="M월"
         locale={ko}
         minDate={new Date()}
         selected={startDate}
@@ -41,7 +81,8 @@ const Calendar = () => {
 };
 
 export const StyledCalendar = styled.div`
-  margin-top: 80px;
+  margin-top: 70px;
+
   .react-datepicker {
     width: 500px;
     padding: 30px 20px;
@@ -49,13 +90,14 @@ export const StyledCalendar = styled.div`
     /* color: #606060; */
 
     .react-datepicker__navigation--previous {
-      left: 80px;
-      top: 29px;
+      left: 20px;
+      top: 300px;
+      color: ${theme.color.pointColor};
     }
 
     .react-datepicker__navigation--next {
-      right: 80px;
-      top: 29px;
+      right: 20px;
+      top: 300px;
     }
 
     .react-datepicker__month-container {
@@ -63,13 +105,16 @@ export const StyledCalendar = styled.div`
 
       .react-datepicker__header {
         width: 500px;
+        padding: 0;
         background-color: white;
         border: none;
 
         .react-datepicker__current-month {
           margin-bottom: 50px;
           color: ${theme.color.fontColor};
-          font-size: ${theme.fontSize.base};
+          font-size: ${theme.fontSize.md};
+          font-weight: ${theme.fontWeight.base};
+          letter-spacing: 0;
         }
 
         .react-datepicker__day-names {
@@ -77,10 +122,9 @@ export const StyledCalendar = styled.div`
           margin: 0;
 
           .react-datepicker__day-name {
-            margin: 15px;
+            margin: 8px 15px;
             color: ${theme.color.fontColor};
             font-size: ${theme.fontSize.xs};
-            font-weight: 600;
           }
         }
       }
