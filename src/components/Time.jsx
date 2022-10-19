@@ -1,40 +1,53 @@
 import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { store } from "../context/store";
 import styled from "styled-components";
 import theme from "../styles/theme";
 // import TimeOptions from "../constantData/timeData";
 import { RadioBtn } from "./FormLayout";
 import { GrPowerReset } from "react-icons/gr";
-import { useParams } from "react-router-dom";
 
 const Time = () => {
+  const navigate = useNavigate;
   const { selectedDate, formInput, setFormInput, timeOptions } =
     useContext(store);
   // const timeData = TimeOptions.time;
 
+  const goComplete = (id) => {
+    navigate(`/complete/${id}`);
+  };
   const handleInput = (event) => {
     const { name, value } = event.target;
     setFormInput({ ...formInput, date: selectedDate, [name]: value });
     console.log(formInput);
   };
 
-  const onSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setFormInput({
+      ...formInput,
+      appoinNum: Math.floor(Math.random() * 1000000000),
+    });
+    console.log("바디담기전", formInput);
     const body = {
       formInput,
     };
     console.log(body);
+    e.preventDefault();
 
-    fetch("http://localhost:3001/appointmentInfo", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(body),
-    })
-      .then((res) => res.json())
-      .then((json) => {
-        console.log(json);
-      });
+    // fetch("http://localhost:3001/appointmentInfo", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(body),
+    // })
+    //   .then((res) => res.json())
+    //   .then((json) => {
+    //     console.log(json);
+    //     e.preventDefault();
+    //     // goComplete(json.id);
+    //   });
   };
 
   return (
@@ -79,13 +92,20 @@ const Time = () => {
           </TimeOption>
         ))}
       </div>
-
-      <button onClick={onSubmit}>예약 확정</button>
+      <button
+        onClick={handleSubmit}
+        className={formInput.time && "able"}
+        disabled={formInput.time ? false : true}
+      >
+        예약 확정
+      </button>
     </TimeContainer>
   );
 };
 
 const TimeContainer = styled.div`
+  position: relative;
+  flex: auto;
   height: 100%;
   padding: 70px 35px 0;
   margin-top: 30px;
@@ -152,7 +172,28 @@ const TimeContainer = styled.div`
     margin-bottom: 30px;
     color: ${theme.color.fontColor};
     font-size: ${theme.fontSize.sm};
-    /* font-weight: ${theme.fontWeight.md}; */
+  }
+
+  button {
+    position: absolute;
+    right: 35px;
+    top: 680px;
+    width: 120px;
+    padding: 15px 0;
+    color: ${theme.color.inputColor};
+    border: none;
+    border-radius: 14px;
+    font-size: ${theme.fontSize.base};
+    font-weight: ${theme.fontWeight.md};
+
+    &.able {
+      color: ${theme.color.pointColor};
+
+      &:hover {
+        color: white;
+        background-color: ${theme.color.pointColor};
+      }
+    }
   }
 `;
 

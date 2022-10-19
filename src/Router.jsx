@@ -16,7 +16,7 @@ const Router = () => {
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/appointment" element={<Appointment />} />
-            <Route path="/complete" element={<Complete />} />
+            <Route path="/complete/:id" element={<Complete />} />
           </Routes>
         </ThemeProvider>
       </BrowserRouter>

@@ -14,9 +14,9 @@ const Calendar = () => {
     timeOptions,
     setTimeOptions,
   } = useContext(store);
+  const now = new Date();
   const [startDate, setStartDate] = useState(new Date());
   const [clickDate, setClickDate] = useState();
-  // const [timeOptions, setTimeOptions] = useState([]);
 
   const handleDateFormat = (e) => {
     const dateArr = e.toLocaleDateString().slice(0, -1).split(". ");
@@ -69,10 +69,10 @@ const Calendar = () => {
         dateFormat="yy년 MM월 dd일 eee요일"
         dateFormatCalendar="M월"
         locale={ko}
-        minDate={new Date()}
+        minDate={new Date(now.setDate(now.getDate() + 1))}
+        maxDate={new Date(now.setDate(now.getDate() + 14))}
         selected={startDate}
         inline
-        // onChange={(e) => console.log(e)}
         onChange={dateHandler}
         disabledKeyboardNavigation
       />
@@ -138,7 +138,7 @@ export const StyledCalendar = styled.div`
           margin: 0;
           margin: 5px;
           padding: 10px;
-          color: #606060;
+          color: ${theme.color.fontColor};
           font-size: ${theme.fontSize.xs};
           font-weight: ${theme.fontWeight.base};
           /* border: 0.5px solid gray; */
@@ -149,12 +149,7 @@ export const StyledCalendar = styled.div`
           }
         }
 
-        //주말 클래스
-        .react-datepicker__day--weekend {
-          color: #cacaca;
-        }
-
-        //오늘 날짜 이전, 선택불가 날짜 클래스
+        //disabled 날짜 클래스
         .react-datepicker__day--disabled {
           background-color: white;
           color: #cacaca;
@@ -176,7 +171,8 @@ export const StyledCalendar = styled.div`
         //오늘 날짜 선택 클래스
         .react-datepicker__day--today {
           border-radius: 0;
-          color: ${theme.color.pointColor};
+          font-weight: ${theme.fontWeight.base};
+          color: ${theme.color.fontColor};
           background-color: white;
         }
       }

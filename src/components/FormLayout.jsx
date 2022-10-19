@@ -18,7 +18,6 @@ const FormLayout = ({ formData }) => {
       setFormInput((inputValues) => ({ ...inputValues, [name]: value }));
     else if (menu === "confirm")
       setInquiryInput((inputValues) => ({ ...inputValues, [name]: value }));
-    console.log(inquiryInput);
   };
 
   useEffect(() => {
@@ -78,7 +77,7 @@ const FormLayout = ({ formData }) => {
           {formData.input.map((content, idx) => (
             <input
               key={idx}
-              type="text"
+              type={content.type}
               placeholder={content.placeholder}
               name={content.name}
               onChange={handleInput}
@@ -153,6 +152,12 @@ const Form = styled.form`
     &:focus {
       outline: 3px solid ${theme.color.pointColor};
     }
+
+    &::-webkit-outer-spin-button,
+    &::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
 
   .notice-box {
@@ -200,7 +205,7 @@ const Form = styled.form`
   .btn-box {
     position: absolute;
     right: 35px;
-    bottom: 30px;
+    top: 680px;
     margin-top: 20px;
 
     button {

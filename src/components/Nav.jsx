@@ -10,7 +10,7 @@ const Nav = () => {
   const navigate = useNavigate();
   const { menu, setMenu } = useContext(store);
   const [isClicked, setClicked] = useState(true);
-  console.log(location);
+
   const goConfirm = () => {
     if (location.pathname === "/appointment") {
       navigate("/");
@@ -21,7 +21,6 @@ const Nav = () => {
 
   return (
     <NavContainer>
-      <img className="logo" src={logo} alt="logo" />
       <div className="menu-btn-box">
         <MenuBtn
           id="appointment"
@@ -51,11 +50,6 @@ const Nav = () => {
 
 const NavContainer = styled.nav`
   margin: 30px 40px 0 0;
-
-  .logo {
-    width: 50px;
-    margin: 30px;
-  }
 
   .menu-btn-box {
     margin-top: 100px;
