@@ -10,7 +10,7 @@ import theme from "./styles/theme";
 const Router = () => {
   return (
     <Context>
-      <BrowserRouter>
+      <BrowserRouter basename={process.env.PUBLIC_URL}>
         <ThemeProvider theme={theme}>
           <GlobalStyles />
           <Routes>
