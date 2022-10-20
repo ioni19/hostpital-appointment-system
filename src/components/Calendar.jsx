@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { store } from "../context/store";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import DatePicker from "react-datepicker";
@@ -6,20 +7,55 @@ import "react-datepicker/dist/react-datepicker.css";
 import { ko } from "date-fns/esm/locale";
 
 const Calendar = () => {
+  const {
+    setSelectedDate,
+    formInput,
+    setFormInput,
+    timeOptions,
+    setTimeOptions,
+  } = useContext(store);
+  const now = new Date();
   const [startDate, setStartDate] = useState(new Date());
-  // const [startDate, setStartDate] = useState(null);
-  const [endDate, setEndDate] = useState(null);
+  const [clickDate, setClickDate] = useState();
+
+  const handleDateFormat = (e) => {
+    const dateArr = e.toLocaleDateString().slice(0, -1).split(". ");
+    setClickDate(dateArr.join(""));
+    setSelectedDate(`${dateArr[0]}년 ${dateArr[1]}월 ${dateArr[2]}일`);
+  };
+
+  const handleData = () => {
+    fetch("http://localhost:3001/timeOptions")
+      .then((res) => res.json())
+      .then((json) => {
+        for (let i = 0; i < json.length; i++) {
+          if (json[i].date === Number(clickDate)) {
+            setTimeOptions(json[i].time);
+
+            break;
+          }
+        }
+      });
+  };
+
+  const dateHandler = (e) => {
+    setStartDate(e);
+    handleDateFormat(e);
+    handleData();
+  };
 
   return (
     <StyledCalendar>
       <DatePicker
-        dateFormat="yy.MM.dd(eee)"
-        dateFormatCalendar="yyyy년 M월"
+        name="date"
+        dateFormat="yy년 MM월 dd일 eee요일"
+        dateFormatCalendar="M월"
         locale={ko}
-        minDate={new Date()}
+        minDate={new Date(now.setDate(now.getDate() + 1))}
+        maxDate={new Date(now.setDate(now.getDate() + 14))}
         selected={startDate}
-        onChange={(date) => setStartDate(date)}
         inline
+        onChange={dateHandler}
         disabledKeyboardNavigation
       />
     </StyledCalendar>
@@ -27,7 +63,8 @@ const Calendar = () => {
 };
 
 export const StyledCalendar = styled.div`
-  margin-top: 80px;
+  margin-top: 70px;
+
   .react-datepicker {
     width: 500px;
     padding: 30px 20px;
@@ -35,13 +72,14 @@ export const StyledCalendar = styled.div`
     /* color: #606060; */
 
     .react-datepicker__navigation--previous {
-      left: 80px;
-      top: 29px;
+      left: 20px;
+      top: 300px;
+      color: ${theme.color.pointColor};
     }
 
     .react-datepicker__navigation--next {
-      right: 80px;
-      top: 29px;
+      right: 20px;
+      top: 300px;
     }
 
     .react-datepicker__month-container {
@@ -49,13 +87,16 @@ export const StyledCalendar = styled.div`
 
       .react-datepicker__header {
         width: 500px;
+        padding: 0;
         background-color: white;
         border: none;
 
         .react-datepicker__current-month {
           margin-bottom: 50px;
           color: ${theme.color.fontColor};
-          font-size: ${theme.fontSize.base};
+          font-size: ${theme.fontSize.md};
+          font-weight: ${theme.fontWeight.base};
+          letter-spacing: 0;
         }
 
         .react-datepicker__day-names {
@@ -63,10 +104,9 @@ export const StyledCalendar = styled.div`
           margin: 0;
 
           .react-datepicker__day-name {
-            margin: 15px;
+            margin: 8px 15px;
             color: ${theme.color.fontColor};
             font-size: ${theme.fontSize.xs};
-            font-weight: 600;
           }
         }
       }
@@ -80,7 +120,7 @@ export const StyledCalendar = styled.div`
           margin: 0;
           margin: 5px;
           padding: 10px;
-          color: #606060;
+          color: ${theme.color.fontColor};
           font-size: ${theme.fontSize.xs};
           font-weight: ${theme.fontWeight.base};
           /* border: 0.5px solid gray; */
@@ -91,12 +131,7 @@ export const StyledCalendar = styled.div`
           }
         }
 
-        //주말 클래스
-        .react-datepicker__day--weekend {
-          color: #cacaca;
-        }
-
-        //오늘 날짜 이전, 선택불가 날짜 클래스
+        //disabled 날짜 클래스
         .react-datepicker__day--disabled {
           background-color: white;
           color: #cacaca;
@@ -118,7 +153,8 @@ export const StyledCalendar = styled.div`
         //오늘 날짜 선택 클래스
         .react-datepicker__day--today {
           border-radius: 0;
-          color: ${theme.color.pointColor};
+          font-weight: ${theme.fontWeight.base};
+          color: ${theme.color.fontColor};
           background-color: white;
         }
       }

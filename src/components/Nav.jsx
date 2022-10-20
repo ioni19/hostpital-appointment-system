@@ -1,23 +1,45 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
+import { store } from "../context/store";
 import styled from "styled-components";
 import theme from "../styles/theme";
 import logo from "../assets/images/logo.png";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 
 const Nav = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+  const { menu, setMenu } = useContext(store);
   const [isClicked, setClicked] = useState(true);
 
-  const setFalse = () => {
-    setClicked(false);
+  const goConfirm = () => {
+    if (location.pathname === "/appointment") {
+      navigate("/");
+      setMenu("confirm");
+    }
   };
 
   return (
     <NavContainer>
-      <img className="logo" src={logo} alt="logo" />
       <div className="menu-btn-box">
-        <MenuBtn clicked={isClicked} onClick={() => setClicked(true)}>
+        <MenuBtn
+          id="appointment"
+          clicked={isClicked}
+          onClick={(e) => {
+            setClicked(true);
+            setMenu(e.target.id);
+          }}
+        >
           예약하기
         </MenuBtn>
-        <MenuBtn clicked={!isClicked} onClick={() => setClicked(false)}>
+        <MenuBtn
+          id="confirm"
+          clicked={!isClicked}
+          onClick={(e) => {
+            setClicked(false);
+            setMenu(e.target.id);
+            goConfirm();
+          }}
+        >
           예약조회
         </MenuBtn>
       </div>
@@ -28,12 +50,8 @@ const Nav = () => {
 const NavContainer = styled.nav`
   margin: 30px 40px 0 0;
 
-  .logo {
-    width: 50px;
-    margin: 30px;
-  }
-
   .menu-btn-box {
+    margin-top: 100px;
     display: flex;
     flex-direction: column;
     border: none;

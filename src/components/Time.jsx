@@ -1,12 +1,48 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { store } from "../context/store";
 import styled from "styled-components";
 import theme from "../styles/theme";
-import TimeOptions from "../constantData/timeData";
+// import TimeOptions from "../constantData/timeData";
 import { RadioBtn } from "./FormLayout";
 import { GrPowerReset } from "react-icons/gr";
 
 const Time = () => {
-  const timeData = TimeOptions.time;
+  const navigate = useNavigate();
+  const { selectedDate, formInput, setFormInput, timeOptions } =
+    useContext(store);
+  // const timeData = TimeOptions.time;
+
+  const goComplete = (id) => {
+    navigate(`/complete/${id}`);
+  };
+  const handleInput = (event) => {
+    const { name, value } = event.target;
+    setFormInput({ ...formInput, date: selectedDate, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    setFormInput({
+      ...formInput,
+      appoinNum: Math.floor(Math.random() * 1000000000),
+    });
+
+    const body = {
+      formInput,
+    };
+
+    fetch("http://localhost:3001/appointmentInfo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        goComplete(json.id);
+      });
+  };
 
   return (
     <TimeContainer>
@@ -16,32 +52,54 @@ const Time = () => {
       </p>
       <div className="announcement-box">
         <p className="announce">
-          <span className="name">정예원</span> 님이 선택하신 예약 일정은
+          <span className="name">{formInput.name}</span> 님이 선택하신{" "}
+          {formInput.kind} 예약 일정은
         </p>
-        <p className="date">2022년 10월 19일 오전 10시입니다.</p>
+        <p className="date">
+          {selectedDate &&
+            formInput.time &&
+            `${selectedDate} ${formInput.time} 입니다.`}
+        </p>
       </div>
-      <div className="reset-btn">
+
+      {/* <div className="reset-btn">
         <GrPowerReset />
-        <span>다시 선택하기</span>
-      </div>
+        <span>다시 
+        선택하기</span>
+      </div> */}
       <div className="time-options">
-        {timeData.map((options) => (
-          <TimeOption key={options.id} isBooked={options.isBooked} time>
+        {timeOptions.map((options) => (
+          <TimeOption
+            onClick={handleInput}
+            key={options.id}
+            isBooked={options.isBooked}
+            time
+          >
             <input
               type="radio"
               name="time"
               disabled={options.isBooked}
+              value={options.time}
               required
             />
             <span>{options.time}</span>
           </TimeOption>
         ))}
       </div>
+      <button
+        onClick={handleSubmit}
+        className={formInput.time && "able"}
+        disabled={formInput.time ? false : true}
+      >
+        예약 확정
+      </button>
     </TimeContainer>
   );
 };
 
 const TimeContainer = styled.div`
+  position: relative;
+  flex: auto;
   height: 100%;
   padding: 70px 35px 0;
   margin-top: 30px;
@@ -50,17 +108,10 @@ const TimeContainer = styled.div`
   /* overflow-y: hidden; */
 
   .title {
-    margin-bottom: 15px;
+    margin-bottom: 10px;
     color: ${theme.color.fontColor};
     font-size: ${theme.fontSize.lg};
     font-weight: ${theme.fontWeight.md};
-  }
-
-  .notice {
-    margin-bottom: 30px;
-    color: ${theme.color.fontColor};
-    font-size: ${theme.fontSize.sm};
-    /* font-weight: ${theme.fontWeight.md}; */
   }
 
   .announcement-box {
@@ -83,6 +134,7 @@ const TimeContainer = styled.div`
     }
 
     .date {
+      height: 30px;
       color: white;
       font-weight: ${theme.fontWeight.md};
       font-size: ${theme.fontSize.md};
@@ -106,6 +158,36 @@ const TimeContainer = styled.div`
   }
 
   .time-options {
+    margin-top: 20px;
+  }
+
+  .notice {
+    padding: 10px 0;
+    margin-bottom: 30px;
+    color: ${theme.color.fontColor};
+    font-size: ${theme.fontSize.sm};
+  }
+
+  button {
+    position: absolute;
+    right: 35px;
+    top: 680px;
+    width: 120px;
+    padding: 15px 0;
+    color: ${theme.color.inputColor};
+    border: none;
+    border-radius: 14px;
+    font-size: ${theme.fontSize.base};
+    font-weight: ${theme.fontWeight.md};
+
+    &.able {
+      color: ${theme.color.pointColor};
+
+      &:hover {
+        color: white;
+        background-color: ${theme.color.pointColor};
+      }
+    }
   }
 `;
 

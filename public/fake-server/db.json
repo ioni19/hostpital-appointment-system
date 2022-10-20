@@ -1,3 +1,966 @@
 {
-  "userInfo": []
+  "appointmentInfo": [
+    {
+      "formInput": {
+        "kind": "",
+        "name": "",
+        "phoneNum": "",
+        "RRN": ""
+      }
+    },
+    {
+      "formInput": {
+        "kind": "",
+        "name": "",
+        "phoneNum": "",
+        "RRN": ""
+      },
+      "id": 1
+    },
+    {
+      "formInput": {
+        "kind": "",
+        "name": "",
+        "phoneNum": "",
+        "RRN": ""
+      },
+      "id": 2
+    },
+    {
+      "formInput": {
+        "kind": "검진",
+        "name": "j",
+        "phoneNum": "9",
+        "RRN": "9",
+        "date": "2022년 10월 28일",
+        "time": "11:00"
+      },
+      "id": 3
+    },
+    {
+      "formInput": {
+        "kind": "검진",
+        "name": "d",
+        "phoneNum": "3",
+        "RRN": "3",
+        "date": "2022년 10월 27일",
+        "time": "10:00"
+      },
+      "id": 4
+    },
+    {
+      "formInput": {
+        "kind": "검진",
+        "name": "d",
+        "phoneNum": "3",
+        "RRN": "3",
+        "date": "2022년 10월 28일",
+        "time": "09:00"
+      },
+      "id": 5
+    },
+    {
+      "formInput": {
+        "kind": "검진",
+        "name": "d",
+        "phoneNum": "3",
+        "RRN": "3",
+        "date": "2022년 10월 28일",
+        "time": "10:00"
+      },
+      "id": 6
+    },
+    {
+      "formInput": {
+        "kind": "검진",
+        "name": "d",
+        "phoneNum": "3",
+        "RRN": "3",
+        "date": "2022년 10월 21일",
+        "time": "09:00"
+      },
+      "id": 7
+    },
+    {
+      "formInput": {
+        "name": "eeq",
+        "kind": "검진",
+        "phoneNum": "33",
+        "RRN": "22",
+        "date": "2022년 10월 21일",
+        "time": "10:00"
+      },
+      "id": 8
+    },
+    {
+      "formInput": {
+        "kind": "검진",
+        "name": "d",
+        "phoneNum": "3",
+        "RRN": "3",
+        "date": "2022년 10월 27일",
+        "time": "10:00"
+      },
+      "id": 9
+    },
+    {
+      "formInput": {
+        "kind": "",
+        "name": "",
+        "phoneNum": "",
+        "RRN": ""
+      },
+      "id": 10
+    },
+    {
+      "formInput": {
+        "kind": "검진",
+        "name": "d",
+        "RRN": "3",
+        "phoneNum": "3",
+        "date": "2022년 10월 28일",
+        "time": "14:00"
+      },
+      "id": 11
+    },
+    {
+      "formInput": {
+        "kind": "",
+        "name": "",
+        "phoneNum": "",
+        "RRN": "",
+        "date": "",
+        "time": ""
+      },
+      "id": 12
+    },
+    {
+      "formInput": {
+        "kind": "검진",
+        "name": "3",
+        "phoneNum": "3",
+        "RRN": "3",
+        "date": "2022년 10월 27일",
+        "time": "10:00"
+      },
+      "id": 13
+    },
+    {
+      "formInput": {
+        "name": "d",
+        "kind": "검진",
+        "phoneNum": "3",
+        "RRN": "3",
+        "date": "2022년 10월 21일",
+        "time": "11:00"
+      },
+      "id": 14
+    },
+    {
+      "formInput": {
+        "kind": "검진",
+        "name": "d",
+        "phoneNum": "3",
+        "RRN": "3",
+        "date": "2022년 10월 27일",
+        "time": "18:00"
+      },
+      "id": 15
+    },
+    {
+      "formInput": {
+        "name": "d",
+        "kind": "검진",
+        "phoneNum": "3",
+        "RRN": "3",
+        "date": "2022년 10월 27일",
+        "time": "10:00"
+      },
+      "id": 16
+    },
+    {
+      "formInput": {
+        "name": "d",
+        "kind": "검진",
+        "phoneNum": "2",
+        "RRN": "2",
+        "date": "2022년 10월 27일",
+        "time": "10:00"
+      },
+      "id": 17
+    },
+    {
+      "formInput": {
+        "kind": "검진",
+        "name": "0",
+        "phoneNum": "0",
+        "RRN": "0",
+        "date": "2022년 10월 27일",
+        "time": "14:00"
+      },
+      "id": 18
+    },
+    {
+      "formInput": {
+        "kind": "진료",
+        "name": "3",
+        "phoneNum": "3",
+        "RRN": "34",
+        "date": "2022년 10월 27일",
+        "time": "10:00"
+      },
+      "id": 19
+    },
+    {
+      "formInput": {
+        "kind": "검진",
+        "name": "김지은",
+        "RRN": "9999994535345",
+        "phoneNum": "010367445345",
+        "date": "2022년 10월 21일",
+        "time": "09:00",
+        "appoinNum": 247197558
+      },
+      "id": 20
+    },
+    {
+      "formInput": {
+        "kind": "검진",
+        "name": "4554",
+        "phoneNum": "4334",
+        "RRN": "2345",
+        "date": "2022년 10월 28일",
+        "time": "21:00"
+      },
+      "id": 21
+    },
+    {
+      "formInput": {
+        "name": "ㅇ",
+        "kind": "검진",
+        "phoneNum": "3",
+        "RRN": "33",
+        "date": "2022년 10월 28일",
+        "time": "12:00"
+      },
+      "id": 22
+    }
+  ],
+  "timeOptions": [
+    {
+      "date": 20221021,
+      "time": [
+        {
+          "id": 1,
+          "time": "09:00",
+          "isBooked": true
+        },
+        {
+          "id": 2,
+          "time": "10:00",
+          "isBooked": false
+        },
+        {
+          "id": 3,
+          "time": "11:00",
+          "isBooked": false
+        },
+        {
+          "id": 4,
+          "time": "12:00",
+          "isBooked": false
+        },
+        {
+          "id": 5,
+          "time": "14:00",
+          "isBooked": false
+        },
+        {
+          "id": 6,
+          "time": "15:00",
+          "isBooked": false
+        },
+        {
+          "id": 7,
+          "time": "16:00",
+          "isBooked": false
+        },
+        {
+          "id": 8,
+          "time": "17:00",
+          "isBooked": true
+        },
+        {
+          "id": 9,
+          "time": "18:00",
+          "isBooked": false
+        },
+        {
+          "id": 10,
+          "time": "19:00",
+          "isBooked": false
+        },
+        {
+          "id": 11,
+          "time": "20:00",
+          "isBooked": true
+        },
+        {
+          "id": 12,
+          "time": "21:00",
+          "isBooked": false
+        }
+      ]
+    },
+    {
+      "date": 20221022,
+      "time": [
+        {
+          "id": 1,
+          "time": "09:00",
+          "isBooked": true
+        },
+        {
+          "id": 2,
+          "time": "10:00",
+          "isBooked": false
+        },
+        {
+          "id": 3,
+          "time": "11:00",
+          "isBooked": false
+        },
+        {
+          "id": 4,
+          "time": "12:00",
+          "isBooked": false
+        },
+        {
+          "id": 5,
+          "time": "14:00",
+          "isBooked": true
+        },
+        {
+          "id": 6,
+          "time": "15:00",
+          "isBooked": true
+        },
+        {
+          "id": 7,
+          "time": "16:00",
+          "isBooked": false
+        },
+        {
+          "id": 8,
+          "time": "17:00",
+          "isBooked": false
+        },
+        {
+          "id": 9,
+          "time": "18:00",
+          "isBooked": false
+        },
+        {
+          "id": 10,
+          "time": "19:00",
+          "isBooked": false
+        },
+        {
+          "id": 11,
+          "time": "20:00",
+          "isBooked": true
+        },
+        {
+          "id": 12,
+          "time": "21:00",
+          "isBooked": false
+        }
+      ]
+    },
+    {
+      "date": 20221023,
+      "time": [
+        {
+          "id": 1,
+          "time": "09:00",
+          "isBooked": true
+        },
+        {
+          "id": 2,
+          "time": "10:00",
+          "isBooked": false
+        },
+        {
+          "id": 3,
+          "time": "11:00",
+          "isBooked": false
+        },
+        {
+          "id": 4,
+          "time": "12:00",
+          "isBooked": false
+        },
+        {
+          "id": 5,
+          "time": "14:00",
+          "isBooked": false
+        },
+        {
+          "id": 6,
+          "time": "15:00",
+          "isBooked": true
+        },
+        {
+          "id": 7,
+          "time": "16:00",
+          "isBooked": false
+        },
+        {
+          "id": 8,
+          "time": "17:00",
+          "isBooked": true
+        },
+        {
+          "id": 9,
+          "time": "18:00",
+          "isBooked": true
+        },
+        {
+          "id": 10,
+          "time": "19:00",
+          "isBooked": true
+        },
+        {
+          "id": 11,
+          "time": "20:00",
+          "isBooked": true
+        },
+        {
+          "id": 12,
+          "time": "21:00",
+          "isBooked": false
+        }
+      ]
+    },
+    {
+      "date": 20221024,
+      "time": [
+        {
+          "id": 1,
+          "time": "09:00",
+          "isBooked": true
+        },
+        {
+          "id": 2,
+          "time": "10:00",
+          "isBooked": true
+        },
+        {
+          "id": 3,
+          "time": "11:00",
+          "isBooked": false
+        },
+        {
+          "id": 4,
+          "time": "12:00",
+          "isBooked": false
+        },
+        {
+          "id": 5,
+          "time": "14:00",
+          "isBooked": true
+        },
+        {
+          "id": 6,
+          "time": "15:00",
+          "isBooked": true
+        },
+        {
+          "id": 7,
+          "time": "16:00",
+          "isBooked": false
+        },
+        {
+          "id": 8,
+          "time": "17:00",
+          "isBooked": false
+        },
+        {
+          "id": 9,
+          "time": "18:00",
+          "isBooked": true
+        },
+        {
+          "id": 10,
+          "time": "19:00",
+          "isBooked": true
+        },
+        {
+          "id": 11,
+          "time": "20:00",
+          "isBooked": true
+        },
+        {
+          "id": 12,
+          "time": "21:00",
+          "isBooked": false
+        }
+      ]
+    },
+    {
+      "date": 20221025,
+      "time": [
+        {
+          "id": 1,
+          "time": "09:00",
+          "isBooked": true
+        },
+        {
+          "id": 2,
+          "time": "10:00",
+          "isBooked": false
+        },
+        {
+          "id": 3,
+          "time": "11:00",
+          "isBooked": true
+        },
+        {
+          "id": 4,
+          "time": "12:00",
+          "isBooked": false
+        },
+        {
+          "id": 5,
+          "time": "14:00",
+          "isBooked": false
+        },
+        {
+          "id": 6,
+          "time": "15:00",
+          "isBooked": true
+        },
+        {
+          "id": 7,
+          "time": "16:00",
+          "isBooked": true
+        },
+        {
+          "id": 8,
+          "time": "17:00",
+          "isBooked": true
+        },
+        {
+          "id": 9,
+          "time": "18:00",
+          "isBooked": false
+        },
+        {
+          "id": 10,
+          "time": "19:00",
+          "isBooked": false
+        },
+        {
+          "id": 11,
+          "time": "20:00",
+          "isBooked": true
+        },
+        {
+          "id": 12,
+          "time": "21:00",
+          "isBooked": false
+        }
+      ]
+    },
+    {
+      "date": 20221026,
+      "time": [
+        {
+          "id": 1,
+          "time": "09:00",
+          "isBooked": false
+        },
+        {
+          "id": 2,
+          "time": "10:00",
+          "isBooked": true
+        },
+        {
+          "id": 3,
+          "time": "11:00",
+          "isBooked": false
+        },
+        {
+          "id": 4,
+          "time": "12:00",
+          "isBooked": false
+        },
+        {
+          "id": 5,
+          "time": "14:00",
+          "isBooked": true
+        },
+        {
+          "id": 6,
+          "time": "15:00",
+          "isBooked": true
+        },
+        {
+          "id": 7,
+          "time": "16:00",
+          "isBooked": false
+        },
+        {
+          "id": 8,
+          "time": "17:00",
+          "isBooked": false
+        },
+        {
+          "id": 9,
+          "time": "18:00",
+          "isBooked": false
+        },
+        {
+          "id": 10,
+          "time": "19:00",
+          "isBooked": false
+        },
+        {
+          "id": 11,
+          "time": "20:00",
+          "isBooked": false
+        },
+        {
+          "id": 12,
+          "time": "21:00",
+          "isBooked": false
+        }
+      ]
+    },
+    {
+      "date": 20221027,
+      "time": [
+        {
+          "id": 1,
+          "time": "09:00",
+          "isBooked": true
+        },
+        {
+          "id": 2,
+          "time": "10:00",
+          "isBooked": false
+        },
+        {
+          "id": 3,
+          "time": "11:00",
+          "isBooked": false
+        },
+        {
+          "id": 4,
+          "time": "12:00",
+          "isBooked": false
+        },
+        {
+          "id": 5,
+          "time": "14:00",
+          "isBooked": false
+        },
+        {
+          "id": 6,
+          "time": "15:00",
+          "isBooked": false
+        },
+        {
+          "id": 7,
+          "time": "16:00",
+          "isBooked": false
+        },
+        {
+          "id": 8,
+          "time": "17:00",
+          "isBooked": false
+        },
+        {
+          "id": 9,
+          "time": "18:00",
+          "isBooked": false
+        },
+        {
+          "id": 10,
+          "time": "19:00",
+          "isBooked": false
+        },
+        {
+          "id": 11,
+          "time": "20:00",
+          "isBooked": false
+        },
+        {
+          "id": 12,
+          "time": "21:00",
+          "isBooked": false
+        }
+      ]
+    },
+    {
+      "date": 20221028,
+      "time": [
+        {
+          "id": 1,
+          "time": "09:00",
+          "isBooked": false
+        },
+        {
+          "id": 2,
+          "time": "10:00",
+          "isBooked": false
+        },
+        {
+          "id": 3,
+          "time": "11:00",
+          "isBooked": false
+        },
+        {
+          "id": 4,
+          "time": "12:00",
+          "isBooked": false
+        },
+        {
+          "id": 5,
+          "time": "14:00",
+          "isBooked": false
+        },
+        {
+          "id": 6,
+          "time": "15:00",
+          "isBooked": false
+        },
+        {
+          "id": 7,
+          "time": "16:00",
+          "isBooked": false
+        },
+        {
+          "id": 8,
+          "time": "17:00",
+          "isBooked": true
+        },
+        {
+          "id": 9,
+          "time": "18:00",
+          "isBooked": false
+        },
+        {
+          "id": 10,
+          "time": "19:00",
+          "isBooked": false
+        },
+        {
+          "id": 11,
+          "time": "20:00",
+          "isBooked": false
+        },
+        {
+          "id": 12,
+          "time": "21:00",
+          "isBooked": false
+        }
+      ]
+    },
+    {
+      "date": 20221029,
+      "time": [
+        {
+          "id": 1,
+          "time": "09:00",
+          "isBooked": false
+        },
+        {
+          "id": 2,
+          "time": "10:00",
+          "isBooked": true
+        },
+        {
+          "id": 3,
+          "time": "11:00",
+          "isBooked": false
+        },
+        {
+          "id": 4,
+          "time": "12:00",
+          "isBooked": true
+        },
+        {
+          "id": 5,
+          "time": "14:00",
+          "isBooked": true
+        },
+        {
+          "id": 6,
+          "time": "15:00",
+          "isBooked": false
+        },
+        {
+          "id": 7,
+          "time": "16:00",
+          "isBooked": false
+        },
+        {
+          "id": 8,
+          "time": "17:00",
+          "isBooked": false
+        },
+        {
+          "id": 9,
+          "time": "18:00",
+          "isBooked": false
+        },
+        {
+          "id": 10,
+          "time": "19:00",
+          "isBooked": false
+        },
+        {
+          "id": 11,
+          "time": "20:00",
+          "isBooked": false
+        },
+        {
+          "id": 12,
+          "time": "21:00",
+          "isBooked": false
+        }
+      ]
+    },
+    {
+      "date": 20221030,
+      "time": [
+        {
+          "id": 1,
+          "time": "09:00",
+          "isBooked": false
+        },
+        {
+          "id": 2,
+          "time": "10:00",
+          "isBooked": false
+        },
+        {
+          "id": 3,
+          "time": "11:00",
+          "isBooked": false
+        },
+        {
+          "id": 4,
+          "time": "12:00",
+          "isBooked": false
+        },
+        {
+          "id": 5,
+          "time": "14:00",
+          "isBooked": false
+        },
+        {
+          "id": 6,
+          "time": "15:00",
+          "isBooked": false
+        },
+        {
+          "id": 7,
+          "time": "16:00",
+          "isBooked": false
+        },
+        {
+          "id": 8,
+          "time": "17:00",
+          "isBooked": false
+        },
+        {
+          "id": 9,
+          "time": "18:00",
+          "isBooked": false
+        },
+        {
+          "id": 10,
+          "time": "19:00",
+          "isBooked": false
+        },
+        {
+          "id": 11,
+          "time": "20:00",
+          "isBooked": false
+        },
+        {
+          "id": 12,
+          "time": "21:00",
+          "isBooked": false
+        }
+      ]
+    },
+    {
+      "date": 20221031,
+      "time": [
+        {
+          "id": 1,
+          "time": "09:00",
+          "isBooked": false
+        },
+        {
+          "id": 2,
+          "time": "10:00",
+          "isBooked": false
+        },
+        {
+          "id": 3,
+          "time": "11:00",
+          "isBooked": false
+        },
+        {
+          "id": 4,
+          "time": "12:00",
+          "isBooked": false
+        },
+        {
+          "id": 5,
+          "time": "14:00",
+          "isBooked": false
+        },
+        {
+          "id": 6,
+          "time": "15:00",
+          "isBooked": false
+        },
+        {
+          "id": 7,
+          "time": "16:00",
+          "isBooked": false
+        },
+        {
+          "id": 8,
+          "time": "17:00",
+          "isBooked": false
+        },
+        {
+          "id": 9,
+          "time": "18:00",
+          "isBooked": false
+        },
+        {
+          "id": 10,
+          "time": "19:00",
+          "isBooked": false
+        },
+        {
+          "id": 11,
+          "time": "20:00",
+          "isBooked": false
+        },
+        {
+          "id": 12,
+          "time": "21:00",
+          "isBooked": false
+        }
+      ]
+    }
+  ]
 }

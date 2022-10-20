@@ -2,9 +2,9 @@ const Appointment = {
   title: "예약하기",
   radio: ["진료", "검진"],
   input: [
-    { placeholder: "이름", name: "name" },
-    { placeholder: "전화번호", name: "phoneNum" },
-    { placeholder: "주민등록번호", name: "RRN" },
+    { placeholder: "이름", name: "name", type: "text" },
+    { placeholder: "전화번호", name: "phoneNum", type: "number" },
+    { placeholder: "주민등록번호", name: "RRN", type: "number" },
   ],
   notice: {
     title: "개인정보 수집∙이용 동의",
@@ -16,11 +16,11 @@ const Appointment = {
 };
 
 const Confirm = {
-  title: "예약확인",
+  title: "예약조회",
   input: [
-    { placeholder: "이름", name: "name" },
-    { placeholder: "전화번호", name: "phoneNum" },
-    { placeholder: "예약번호", name: "appointNum" },
+    { placeholder: "이름", name: "name", type: "text" },
+    { placeholder: "전화번호", name: "phoneNum", type: "number" },
+    { placeholder: "예약번호", name: "appointNum", type: "number" },
   ],
   buttonContent: "조회",
   notice: {
