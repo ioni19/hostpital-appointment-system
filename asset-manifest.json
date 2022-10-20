@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/pre-onboarding-appointment-lululab-/static/css/main.746f1836.css",
+    "main.js": "/pre-onboarding-appointment-lululab-/static/js/main.a371b34e.js",
+    "static/media/logo.png": "/pre-onboarding-appointment-lululab-/static/media/logo.1511c3d419cb16aec154.png",
+    "index.html": "/pre-onboarding-appointment-lululab-/index.html",
+    "main.746f1836.css.map": "/pre-onboarding-appointment-lululab-/static/css/main.746f1836.css.map",
+    "main.a371b34e.js.map": "/pre-onboarding-appointment-lululab-/static/js/main.a371b34e.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.746f1836.css",
+    "static/js/main.a371b34e.js"
+  ]
+}
