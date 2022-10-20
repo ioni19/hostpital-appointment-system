@@ -21,7 +21,6 @@ const Calendar = () => {
   const handleDateFormat = (e) => {
     const dateArr = e.toLocaleDateString().slice(0, -1).split(". ");
     setClickDate(dateArr.join(""));
-    // console.log(clickDate);
     setSelectedDate(`${dateArr[0]}년 ${dateArr[1]}월 ${dateArr[2]}일`);
   };
 
@@ -29,37 +28,20 @@ const Calendar = () => {
     fetch("http://localhost:3001/timeOptions")
       .then((res) => res.json())
       .then((json) => {
-        // // clickDate;
         for (let i = 0; i < json.length; i++) {
           if (json[i].date === Number(clickDate)) {
             setTimeOptions(json[i].time);
-            // console.log(json[i].time);
+
             break;
           }
         }
-        // json.map((timeData) => {
-        // console.log(timeData.time);
-        console.log(clickDate);
-
-        //   timeData.date === Number(clickDate) && setTimeOptions(timeData.time);
-        //   console.log(timeOptions);
-        // });
       });
   };
 
-  // const handleInput = (event) => {
-  //   const { name, value } = event.target;
-  //   setFormInput({ ...formInput, date: event, [name]: value });
-  //   console.log(formInput);
-  // };
-
-  const handleTimeOptions = (e) => {};
   const dateHandler = (e) => {
     setStartDate(e);
     handleDateFormat(e);
     handleData();
-
-    // handleInput(e);
   };
 
   return (

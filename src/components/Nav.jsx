@@ -15,7 +15,6 @@ const Nav = () => {
     if (location.pathname === "/appointment") {
       navigate("/");
       setMenu("confirm");
-      console.log("누름");
     }
   };
 

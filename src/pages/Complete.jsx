@@ -13,7 +13,6 @@ const Complete = () => {
     fetch(`http://localhost:3001/appointmentInfo/${userId}`)
       .then((res) => res.json())
       .then((json) => {
-        console.log(json.formInput);
         setAppointInfo(json.formInput);
       });
   }, []);
@@ -22,8 +21,12 @@ const Complete = () => {
     <CompleteContainer>
       <div className="content-box">
         <h1 className="title">예약이 완료되었습니다.</h1>
-        {appointInfo.name} {appointInfo.phoneNum} {appointInfo.date}
-        {appointInfo.time}
+        <p className="content">
+          {appointInfo.name} ({appointInfo.phoneNum}) 님
+          <br />
+          {appointInfo.appointNum} {appointInfo.time} 에{appointInfo.date}{" "}
+          예약완료 되었습니다.
+        </p>
       </div>
     </CompleteContainer>
   );
@@ -48,6 +51,13 @@ const CompleteContainer = styled.div`
       color: ${theme.color.fontColor};
       font-size: ${theme.fontSize.lg};
       font-weight: ${theme.fontWeight.md};
+    }
+
+    .content {
+      margin-top: 50px;
+      text-align: center;
+      color: ${theme.color.fontColor};
+      font-size: ${theme.fontSize.base};
     }
   }
 `;

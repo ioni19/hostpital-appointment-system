@@ -8,7 +8,7 @@ import { RadioBtn } from "./FormLayout";
 import { GrPowerReset } from "react-icons/gr";
 
 const Time = () => {
-  const navigate = useNavigate;
+  const navigate = useNavigate();
   const { selectedDate, formInput, setFormInput, timeOptions } =
     useContext(store);
   // const timeData = TimeOptions.time;
@@ -19,35 +19,29 @@ const Time = () => {
   const handleInput = (event) => {
     const { name, value } = event.target;
     setFormInput({ ...formInput, date: selectedDate, [name]: value });
-    console.log(formInput);
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
     setFormInput({
       ...formInput,
       appoinNum: Math.floor(Math.random() * 1000000000),
     });
-    console.log("바디담기전", formInput);
+
     const body = {
       formInput,
     };
-    console.log(body);
-    e.preventDefault();
 
-    // fetch("http://localhost:3001/appointmentInfo", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(body),
-    // })
-    //   .then((res) => res.json())
-    //   .then((json) => {
-    //     console.log(json);
-    //     e.preventDefault();
-    //     // goComplete(json.id);
-    //   });
+    fetch("http://localhost:3001/appointmentInfo", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    })
+      .then((res) => res.json())
+      .then((json) => {
+        goComplete(json.id);
+      });
   };
 
   return (

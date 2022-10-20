@@ -45,9 +45,7 @@ const FormLayout = ({ formData }) => {
       e.preventDefault();
       fetch("http://localhost:3001/appointmentInfo")
         .then((res) => res.json())
-        .then((json) => {
-          console.log(json);
-        });
+        .then((json) => {});
     }
   };
 
