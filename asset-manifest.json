@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "https://ioni19.github.io/pre-onboarding-appointment-lululab-/static/css/main.746f1836.css",
-    "main.js": "https://ioni19.github.io/pre-onboarding-appointment-lululab-/static/js/main.996d2e1d.js",
+    "main.js": "https://ioni19.github.io/pre-onboarding-appointment-lululab-/static/js/main.694f5c8c.js",
     "static/media/logo.png": "https://ioni19.github.io/pre-onboarding-appointment-lululab-/static/media/logo.1511c3d419cb16aec154.png",
     "index.html": "https://ioni19.github.io/pre-onboarding-appointment-lululab-/index.html",
     "main.746f1836.css.map": "https://ioni19.github.io/pre-onboarding-appointment-lululab-/static/css/main.746f1836.css.map",
-    "main.996d2e1d.js.map": "https://ioni19.github.io/pre-onboarding-appointment-lululab-/static/js/main.996d2e1d.js.map"
+    "main.694f5c8c.js.map": "https://ioni19.github.io/pre-onboarding-appointment-lululab-/static/js/main.694f5c8c.js.map"
   },
   "entrypoints": [
     "static/css/main.746f1836.css",
-    "static/js/main.996d2e1d.js"
+    "static/js/main.694f5c8c.js"
   ]
 }
