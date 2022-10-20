@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/pre-onboarding-appointment-lululab-/static/css/main.746f1836.css",
-    "main.js": "/pre-onboarding-appointment-lululab-/static/js/main.13d82e75.js",
-    "static/media/logo.png": "/pre-onboarding-appointment-lululab-/static/media/logo.1511c3d419cb16aec154.png",
-    "index.html": "/pre-onboarding-appointment-lululab-/index.html",
-    "main.746f1836.css.map": "/pre-onboarding-appointment-lululab-/static/css/main.746f1836.css.map",
-    "main.13d82e75.js.map": "/pre-onboarding-appointment-lululab-/static/js/main.13d82e75.js.map"
+    "main.css": "https://ioni19.github.io/pre-onboarding-appointment-lululab-/static/css/main.746f1836.css",
+    "main.js": "https://ioni19.github.io/pre-onboarding-appointment-lululab-/static/js/main.d82aee65.js",
+    "static/media/logo.png": "https://ioni19.github.io/pre-onboarding-appointment-lululab-/static/media/logo.1511c3d419cb16aec154.png",
+    "index.html": "https://ioni19.github.io/pre-onboarding-appointment-lululab-/index.html",
+    "main.746f1836.css.map": "https://ioni19.github.io/pre-onboarding-appointment-lululab-/static/css/main.746f1836.css.map",
+    "main.d82aee65.js.map": "https://ioni19.github.io/pre-onboarding-appointment-lululab-/static/js/main.d82aee65.js.map"
   },
   "entrypoints": [
     "static/css/main.746f1836.css",
-    "static/js/main.13d82e75.js"
+    "static/js/main.d82aee65.js"
   ]
 }
