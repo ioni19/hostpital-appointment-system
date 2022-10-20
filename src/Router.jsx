@@ -1,4 +1,5 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
+
 import Context from "../src/context/store";
 import Main from "./pages/Main";
 import Appointment from "./pages/Appointment";

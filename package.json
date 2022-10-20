@@ -1,5 +1,4 @@
 {
-  "homepage": "https://ioni19.github.io/pre-onboarding-appointment-lululab-",
   "name": "pre-onboarding-appointment-lululab",
   "version": "0.1.0",
   "private": true,
@@ -15,8 +14,7 @@
     "react-scripts": "5.0.1",
     "styled-components": "^5.3.6",
     "styled-reset": "^4.4.2",
-    "web-vitals": "^2.1.4",
-    "zustand": "^4.1.2"
+    "web-vitals": "^2.1.4"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -48,5 +46,6 @@
   "devDependencies": {
     "gh-pages": "^4.0.0",
     "prettier": "^2.7.1"
-  }
+  },
+  "homepage": "https://bright-mooncake-76ff0e.netlify.app"
 }
