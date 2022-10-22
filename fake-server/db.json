@@ -244,6 +244,17 @@
         "time": "12:00"
       },
       "id": 22
+    },
+    {
+      "formInput": {
+        "kind": "검진",
+        "name": "ㅇ",
+        "phoneNum": "3",
+        "RRN": "4",
+        "date": "2022년 10월 28일",
+        "time": "14:00"
+      },
+      "id": 23
     }
   ],
   "timeOptions": [
